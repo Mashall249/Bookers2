@@ -10,7 +10,7 @@
     <% @books.each do |book| %>
       <tr>
         <td>
-          <img><%= 
+          <img><%= image_tag book.user.get_profile_image(100,100) %></img>
         <td>
           <span><%= book.title %></span>
         </td>
