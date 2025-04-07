@@ -3,15 +3,25 @@
 <table>
       <tr>
         <td>
-          <img><%= %></img>
-          <%= link_to, users_path(user.id) %>
+          <img><%= image_tag book.user.get_profile_image(100,100) %></img>
+          <%= link_to, user_path(user.id) %>
           <span><%= user.name %></span>
         <td>
-          <%= link_to, books_show_path(book.id) %>
+          <%= link_to, book_path(book.id) %>
           <span><%= book.title %></span>
         </td>
         <td>
           <span><%= book.body %></span>
+        </td>
+        <td>
+          <% if @book.user == current_user %>
+          <span><%= link_to 'Edit', edit_book_path(book.id) %></span>
+          <% end %>
+        </td>
+        <td>
+          <% if @book.user == current_user %>
+          <span><%= link_to 'Destroy', book_path(book.id),method: :delete, "data-confirm" => "Are you sure?" %></span>
+          <% end %>
         </td>
       </tr>
     <% end %>
