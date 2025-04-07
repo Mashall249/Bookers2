@@ -5,9 +5,9 @@
         <td>
           <img><%= %></img>
           <%= link_to, users_path(user.id) %>
-          <a><%= user.name %></a>
+          <span><%= user.name %></span>
         <td>
-          <%= link_to
+          <%= link_to, books_show_path(book.id) %>
           <span><%= book.title %></span>
         </td>
         <td>
