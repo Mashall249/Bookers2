@@ -1,9 +1,10 @@
-<if @book.errors.any? %>
+<% if @book.errors.any? %>
   <div class="error_explanation">
-    <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+    <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
     <ul>
-    <% diary.errors.full_messages.each do |message| %>
-      <li><%= messeage %></li>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
     </ul>
   </div>
 <% end %>

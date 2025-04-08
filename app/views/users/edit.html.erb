@@ -1,9 +1,10 @@
-<if @user.errors.any? %>
+<% if @user.errors.any? %>
   <div class="error_explanation">
-    <h2><%= pluralize(diary.errors.count, "error") %> prohibited this diary from being saved:</h2>
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
     <ul>
-    <% diary.errors.full_messages.each do |message| %>
-      <li><%= messeage %></li>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
     </ul>
   </div>
 <% end %>
@@ -15,6 +16,6 @@
   <label for="inputImage">Image</label>
   <%= f.file_field :profile_image, placeholder:"profileImage", accept: "image/*" %>
   <label for="inputIntroduction">Introduction</label>
-  <%= f.text_area :body, placeholder:"introduction" %>
+  <%= f.text_area :introduction, placeholder:"introduction" %>
   <%= f.submit "Update User" %>
 <% end %>
