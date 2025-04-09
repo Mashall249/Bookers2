@@ -1,10 +1,21 @@
-<h1>User info</h1>
+<% if book.errors.any? %>
+  <div class="error_explanation">
+    <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <ul>
+    <% book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h2>User info</h2>
 
 <table>
 
   <tr>
     <td>
-      <img><%= image_tag book.user.get_profile_image(100,100) %></img>
+      <img><%= image_tag user.get_profile_image, size: '100x100' %></img>
     </td>
     <td></td>
   </tr>
@@ -12,26 +23,30 @@
   <tr>
     <td>name</td>
     <td>
-      <p><%= current_user.name %></p>
+      <p><%= user.name %></p>
     </td>
   </tr>
 
   <tr>
     <td>introduction</td>
     <td>
-      <p><%= current_user.body %></p>
+      <p><%= user.introduction %></p>
     </td>
   </tr>
 
 </table>
 
-<%= link_to 'Edit', users_edit_path(current_user.id) %>
+<div class ="row">
+  <%= link_to edit_user_path(current_user.id) do %>
+    <button type="button" class="btn btn-outline-secondary btn-block"><i class="fa-solid fa-user-gear"></i></button>
+  <% end %>
+</div>
 
-<h1>New book</h1>
+<h2>New book</h2>
 <%= form_with model: book do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>
   <h4>Opinion</h4>
   <%= f.text_area :body %>
-  <%= f.submit "Create Book" %>
+  <%= f.submit "Create Book", class: "btn btn-success" %>
 <% end %>
