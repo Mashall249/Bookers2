@@ -1,3 +1,7 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <% if @user.errors.any? %>
   <div class="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -9,13 +13,27 @@
   </div>
 <% end %>
 
-<h1>User info</h1>
-<%= form_with model: @current_user do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name" %>
-  <label for="inputImage">Image</label>
-  <%= f.file_field :profile_image, placeholder:"profileImage", accept: "image/*" %>
-  <label for="inputIntroduction">Introduction</label>
-  <%= f.text_area :introduction, placeholder:"introduction" %>
-  <%= f.submit "Update User" %>
-<% end %>
+<div class ="container">
+  <div class ="row">
+    <div class ="col-sm-12 col-md-8 col-lg-5">
+      <h1>User info</h1>
+        <%= form_with model: @current_user do |f| %>
+          <div class="form-group">
+          <label for="inputName">Name</label>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name" %>
+          </div>
+          <div class="form-group">
+          <label for="inputImage">Image</label>
+          <%= f.file_field :profile_image, placeholder:"profileImage", accept: "image/*" %>
+          </div>
+          <div class="form-group">
+          <label for="inputIntroduction">Introduction</label>
+          <%= f.text_area :introduction, placeholder:"introduction" %>
+          </div>
+          <div class="form-group">
+          <%= f.submit "Update User", class: "btn btn-secondary" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

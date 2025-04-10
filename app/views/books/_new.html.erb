@@ -11,7 +11,7 @@
 
 <h2>User info</h2>
 
-<table>
+<table class="table">
 
   <tr>
     <td>
@@ -37,16 +37,18 @@
 </table>
 
 <div class ="row">
-  <%= link_to edit_user_path(current_user.id) do %>
-    <button type="button" class="btn btn-outline-secondary btn-block"><i class="fa-solid fa-user-gear"></i></button>
+  <%= link_to edit_user_path(current_user) do %>
+    <button type="button" class="btn btn-outline-secondary btn-block">
+      <i class="fa-solid fa-user-gear"></i>
+    </button>
   <% end %>
 </div>
 
 <h2>New book</h2>
 <%= form_with model: book do |f| %>
-  <h4>Title</h4>
+  <p>Title</p>
   <%= f.text_field :title %>
-  <h4>Opinion</h4>
+  <p>Opinion</p>
   <%= f.text_area :body %>
   <%= f.submit "Create Book", class: "btn btn-success" %>
 <% end %>
