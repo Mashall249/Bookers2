@@ -22,20 +22,15 @@
         <% @books.each do |book| %>
         <tr>
           <td>
-            <img><%= image_tag book.user.get_profile_image, size: '100x100' %></img>
-          <td>
-            <% link_to book_path(book.id) do %>
-              <span><%= book.title %></span>
+            <%= link_to user_path(book.user) do %>
+              <%= image_tag book.user.get_profile_image, size: '100x100' %>
             <% end %>
           </td>
           <td>
+            <%= link_to book.title, book_path(book) %>
+          </td>
+          <td>
             <span><%= book.body %></span>
-          </td>
-          <td>
-            <span><%= link_to 'Edit', edit_book_path(book.id), class: "btn btn-sm btn-success" %></span>
-          </td>
-          <td>
-            <span><%= link_to 'Destroy', book_path(book.id),method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger" %></span>
           </td>
         </tr>
         <% end %>
